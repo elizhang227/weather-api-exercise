@@ -54,22 +54,29 @@ function addMap(object) {
     iframe.src = mapUrl;
     weatherDiv.append(iframe);
 }
-//function sunInfo(object, timeOfDay) {
-function sunInfo(object) {
-// get sunrise and sunset info
-    //const sunriseInfo = object.sys.sunrise;
-    //const sunsetInfo = object.sys.suset;
-// convert to standard date format
-    const date = new Date(unix_timestamp*1000);
+
+function test(unix) {
+    const date = new Date(unix*1000);
     const hours = date.getHours();
     const minutes = "0" + date.getMinutes();
     const seconds = "0" + date.getSeconds();
     const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    return formattedTime;
+}
+//function sunInfo(object, timeOfDay) {
+function sunInfo(object) {
+// get sunrise and sunset info
+    const sunriseInfo = object.sys.sunrise;
+    const sunsetInfo = object.sys.sunset;
+// convert to standard date format
 
-    const actualTime = document.createElement('div');
-    actualTime.textContent = formattedTime;
+    const sunriseTime = document.createElement('div');
+    sunriseTime.textContent = test(sunriseInfo);
+    const sunsetTime = document.createElement('div');
+    sunsetTime.textContent = test(sunsetInfo);
 
-    weatherDiv.append(actualTime);
+    weatherDiv.append(sunriseTime);
+    weatherDiv.append(sunsetTime);
 }
 // add correctly formatted dates to the page
 function formatDate(date) {
