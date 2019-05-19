@@ -19,6 +19,7 @@ function addWind(object) {
     windItem.textContent = object;
     weatherDiv.append(windItem);
 }
+
 // Add icon to weather div
 function addIcon(object) {
 // get icon code from object
