@@ -7,6 +7,7 @@ function addLocationName(object) {
     locationItem.textContent = object;
     weatherDiv.append(locationItem);
 }
+
 // Add temperature to weather div
 function addTemp(object) {
     const tempItem = document.createElement('div');
